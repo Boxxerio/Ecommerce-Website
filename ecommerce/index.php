@@ -1,0 +1,184 @@
+<?php
+    $insert = false;
+if(isset($_POST['name'])){
+   
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+
+    $con = mysqli_connect($server, $username, $password);
+
+
+    if(!$con){
+        die("connection to this database failed due to" . mysqli_connect_error());
+    }
+
+    $name = $_POST['name'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $desc = $_POST['desc'];
+    $sql = "INSERT INTO `shop`.`shop1` (`name`, `age`, `gender`, `email`, `phone`, `other`, `dt`) VALUES ('$name', '$age', '$gender', '$email', '$phone', '$desc', current_timestamp());";
+  
+
+    if($con->query($sql)== true){
+   
+        $insert = true;
+    }
+    else{
+        echo "ERROR: $sql <br> $con->error";
+
+    }
+    $con->close();
+}
+?>
+
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>cart</title>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="us.html">About Us</a></li>
+                <!-- <li><a href="#">Connect</a></li> -->
+                <li><a href="cart.html">Cart</a></li>
+                <!-- <li><a href="#">Profile</a></li> -->
+                <li><a href="sign.html">Sign up</a></li>
+                <!-- <li><a href="#"></a></li> -->
+            </ul>
+            <img id="logo"  src="logo.jpeg" alt="logo">
+        </nav>
+    </header>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Travel Form</title>
+   
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <img class="bg" src="shop.jpg" alt="shop img"> -->
+    <div class="container">
+        <h1>Welcome to Aditya Sharma And Sons Sign up form</h3>
+        <p>Enter your details and submit this form </p>
+        <?php
+        if($insert == true){
+        echo "<p class='submitMsg'>Thanks for submitting the form.</p>";
+        }
+        ?>
+        <form action="index.php" method="post">
+            <input type="text" name="name" id="name" placeholder="Enter your name">
+            <input type="text" name="age" id="age" placeholder="Enter your Age">
+            <input type="text" name="gender" id="gender" placeholder="Enter your gender">
+            <input type="email" name="email" id="email" placeholder="Enter your email">
+            <input type="phone" name="phone" id="phone" placeholder="Enter your phone">
+            <textarea name="desc" id="desc" cols="30" rows="10" placeholder="Enter any other information here"></textarea>
+            <button class="btn">Submit</button> 
+        </form>
+    </div>
+    <script>
+         
+      const form = document.getElementById('form');
+      
+      
+      form.addEventListener('submit', (event) => {
+      
+        event.preventDefault();
+        
+       
+        const name = document.getElementById('name');
+        const age = document.getElementById('age');
+        const gender = document.getElementById('gender');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const desc = document.getElementById('desc');
+        
+        // Validate form fields
+        if (name.value.length > 20) {
+          alert('Name should not exceed 20 characters.');
+          name.focus();
+          return false;
+        }
+
+        if (name.value.trim() === '') {
+          alert('Please enter a name.');
+          shopname.focus();
+          return false;
+        }
+        
+        if (isNaN(age.value) || age.value > 99) {
+          alert('Age should be a number less than 100.');
+          age.focus();
+          return false;
+        }
+
+        if (age.value.trim() === '') {
+          alert('Please enter age.');
+          shopname.focus();
+          return false;
+        }
+        
+        if (gender.value.length > 10) {
+          alert('Gender should not exceed 10 characters.');
+          gender.focus();
+          return false;
+        }
+
+        if (gender.value.trim() === '') {
+          alert('Please enter your gender.');
+          shopname.focus();
+          return false;
+        }
+        
+        if (!email.checkValidity()) {
+          alert('Please enter a valid email address.');
+          email.focus();
+          return false;
+        }
+        
+        if (isNaN(phone.value) || phone.value.length !== 10) {
+          alert('Phone number should be a 10-digit number.');
+          phone.focus();
+          return false;
+        }
+
+        if (phone.value.trim() === '') {
+          alert('Please enter a phone number.');
+          shopname.focus();
+          return false;
+        }
+        
+        if (desc.value.length > 70) {
+          alert('Description should not exceed 70 characters.');
+          desc.focus();
+          return false;
+        }
+        
+        form.submit();
+      });
+    </script>
+    
+</body>
+</html>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">WhatsApp</a></li>
+            </ul>
+        </nav>
+        <p>© 2023 Aditya Sharma&Sons Estore Website. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>    

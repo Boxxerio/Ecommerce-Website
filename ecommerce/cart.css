@@ -1,0 +1,56 @@
+.head h1{
+text-align: center;
+justify-content: safe;
+}
+#logo {
+    align-items: left;
+    width: 200px;
+    height: 150px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: right;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+#cart-container table{
+    text-decoration:wavy;
+    text-shadow: #000000;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+#cart-container thead{
+    font-weight: 200;
+}
+#cart-container h1{
+    font-weight: bolder;
+    text-shadow: 50px;
+    background: #080bcb;
+}
